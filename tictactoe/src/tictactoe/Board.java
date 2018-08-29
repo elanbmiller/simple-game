@@ -16,11 +16,15 @@ public class Board {
 		for(int i = 0; i < size; i++)  {
 	        squaresList.add(new ArrayList<Square>(size));
 		}
-		
-		
-		
-		
-		
+
+	}
+	
+	public Status GetStatusAtLocation(int x, int y) {
+		// TODO: 
+	}
+	
+	public void ChangeStatusAtLocation(int x, int y, Status newStatus) {
+		// TODO:
 	}
 	
 	
