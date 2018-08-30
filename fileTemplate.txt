@@ -1,7 +1,7 @@
 <X player's score>
 <Y player's score>
 <boardsize>
+<current move>
 x,o,?
 o,x,x
 x,?,o
-<current move>
