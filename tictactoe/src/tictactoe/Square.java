@@ -3,7 +3,7 @@ package tictactoe;
 enum Status {
 	x,
 	o,
-	q; // Question MArk
+	q; // Question MArk or NONE
 }
 
 
