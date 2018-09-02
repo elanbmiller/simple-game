@@ -2,37 +2,107 @@ package tictactoe;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
+//Button listener from https://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
+
 public class Main extends JFrame{
+
+	Board board;
+	Status current_player = Status.x;
 
 	public Main() {
 		super("Main");
 		super.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		super.add(new JLabel("Tic Tac Toe"));
+
+
+		//TODO: Check if there's an unifinished game, if so, load it
+		//otherwise populate initial frame w/ question marks
+
 		//TODO: Create board w/ board_size
 		int dimension = this.get_dim();
+		board = new Board(dimension);
+
+		//Current Player is automatically set to X
+		this.current_player = Status.x;
+
 		JFrame frame = new JFrame("Flow Layout");
 		frame.setLayout(new GridLayout(dimension,dimension));
 		frame.setSize(500,500);  
 		frame.setVisible(true);  
-		
-		//TODO: Check if there's an unifinished game, if so, load it
-		//otherwise populate initial frame w/ question marks
-		
+
+
 		this.populate_init_frame(dimension, frame);
-		
+
+		System.out.println(board.get_squares_list());
+
 		super.pack();
 		super.setVisible(true);
+
 	}
 
 	public void populate_init_frame(int dimension, JFrame frame) {
+		ArrayList<ArrayList<Square>> updated_squares_list = board.get_squares_list();
 		//Create buttons
-		for (int i = 0; i < dimension*dimension; i++) {
-			JButton button = new JButton("?");
-			frame.add(button);
+		for (int i = 0; i < dimension; i++) {
+			ArrayList tmp = new ArrayList<Square>();
+			for (int j = 0; j < dimension; j++) {
+				Square button = new Square(Status.q);
+				button.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent e)
+					{
+						//if button has already been chosen
+						if (button.isBlocked()) {
+							JDialog d = new JDialog(frame, "Button is already set", true);
+							d.setLocationRelativeTo(frame);
+							d.setVisible(true);
+						}
+						else {
+							//change  status
+							button.ChangeStatus(getPlayer());
+							if(board.CheckForWin() != Status.q) {
+								JDialog d = new JDialog(frame, board.CheckForWin().toString() + " WON!!!!", true);
+								d.setLocationRelativeTo(frame);
+								d.setVisible(true);
+								try {
+									Thread.sleep(100);
+								} catch (InterruptedException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+								System.exit(0);
+							}
+							else if (board.is_tie()) {
+								JDialog d = new JDialog(frame, "tie", true);
+								d.setLocationRelativeTo(frame);
+								d.setVisible(true);
+								try {
+									Thread.sleep(100);
+								} catch (InterruptedException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+								System.exit(0);
+							}
+							nextTurn();
+						}
+
+
+					}
+				});
+				tmp.add(button);
+				frame.add(button);
+			}
+			updated_squares_list.set(i, tmp);
 		}
+		System.out.println(updated_squares_list);
+		board.set_squares_list(updated_squares_list);
 	}
 
 	public int get_dim() {
@@ -40,9 +110,23 @@ public class Main extends JFrame{
 		return value;
 	}
 
-	public static void main(String[] args) {
 
-		new Main();
+
+	public Status getPlayer() {
+		return current_player;
+	}
+
+	public void nextTurn() {
+		if(current_player == Status.x) {
+			current_player = Status.o;
+		} else {
+			current_player = Status.x;
+		}
+	}
+
+	public static void main(String[] args) {
+		Main game = new Main();
+
 	}
 
 }

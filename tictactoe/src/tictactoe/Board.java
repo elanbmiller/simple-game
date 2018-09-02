@@ -6,28 +6,36 @@ import java.util.ArrayList;
 public class Board {
 
 
-	ArrayList<ArrayList<Square>> squaresList = new ArrayList<ArrayList<Square>>();  // Row x, column y
+	private ArrayList<ArrayList<Square>> squaresList = new ArrayList<ArrayList<Square>>();  // Row x, column y
 	int xScore = 0;
 	int oScore = 0;
 	boolean isXTurn; //TODO:
 	int size;
-	
+
 	public Board(int _size) {
 		size = _size;
 		// Create a squareList and initiate it
 		for(int i = 0; i < _size; i++)  {
-	        squaresList.add(new ArrayList<Square>(_size));
+			squaresList.add(new ArrayList<Square>(_size));
 		}
+		//X's turn in beginning
+		this.isXTurn = true;
 	}
-	
+
 	public Board(int _size, int _xScore, int _yScore, boolean _isXTurn, ArrayList<ArrayList<Status>> statusList) {
-			
-			// Create a squareList and initiate it
-		
-		}
-	
-	
-	
+
+		// Create a squareList and initiate it
+
+	}
+
+	public void set_squares_list(ArrayList<ArrayList<Square>> updated_squares_List) {
+		this.squaresList = updated_squares_List;
+	}
+
+	public ArrayList<ArrayList<Square>> get_squares_list(){
+		return this.squaresList;
+	}
+
 	public Status GetStatusAtLocation(int x, int y) {
 		// TODO: 
 		return squaresList.get(x).get(y).GetStatus();
@@ -59,6 +67,7 @@ public class Board {
 			}
 		}
 
+		//check rows
 		for(int i = 0; i < size; ++i){
 			Status thisRow = squaresList.get(0).get(i).GetStatus();
 			if(thisRow != Status.q){
@@ -97,21 +106,31 @@ public class Board {
 		Status downLeftDiagonal = squaresList.get(downLeftStartX).get(downLeftStartY).GetStatus();
 		if(downLeftDiagonal != Status.q){
 			boolean stillMatched = true;
-			for(int i = 1; i < size; ++i){
+			for(int i = 0; i < size; ++i){
 				Status thisSquare = squaresList.get(downLeftStartX + i).get(downLeftStartY - i).GetStatus();
 				if(thisSquare == Status.q || thisSquare != downLeftDiagonal){
 					stillMatched = false;
 					break;
 				}
-				if(stillMatched){
-					return downLeftDiagonal;
+			}
+			if(stillMatched){
+				return downLeftDiagonal;
+			}
+		}
+
+		return Status.q;
+	}
+
+	public boolean is_tie(){
+		for(int i = 0; i < size; ++i){
+			for (int j = 0; j < size; j++) {
+				if (squaresList.get(i).get(j).GetStatus() == Status.q) {
+					return false;
 				}
 			}
 		}
-		
-		return q;
+		return true;
 	}
-
 
 
 
