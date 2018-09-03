@@ -26,6 +26,7 @@ public class Main extends JFrame{
 
 		//TODO: Create board w/ board_size
 		int dimension = this.get_dim();
+
 		board = new Board(dimension);
 
 		//Current Player is automatically set to X
@@ -106,11 +107,20 @@ public class Main extends JFrame{
 	}
 
 	public int get_dim() {
-		int value = Integer.parseInt(JOptionPane.showInputDialog("Input Dimension"));
-		return value;
+		try {
+			int value = Integer.parseInt(JOptionPane.showInputDialog("Input Dimension"));
+			if (value <= 0) {
+				JOptionPane.showMessageDialog(null, "Invalid", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
+				System.exit(1);
+			}
+			return value;
+		}
+		catch(NumberFormatException nfe){
+			JOptionPane.showMessageDialog(null, "Invalid", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
+			System.exit(1);
+		}
+		return -1;
 	}
-
-
 
 	public Status getPlayer() {
 		return current_player;
@@ -126,7 +136,7 @@ public class Main extends JFrame{
 
 	public static void main(String[] args) {
 		Main game = new Main();
-		
+
 	}
 
 }
