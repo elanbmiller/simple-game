@@ -16,10 +16,12 @@ class TerminationTests {
 		int maxSizeToTest = 10;
 		for (int size = 1; size < maxSizeToTest; size++) {
 			Board board = new Board(size);
-			ArrayList<ArrayList<Square>> squaresList = new ArrayList<ArrayList<Square>>();  // Row x, column y
+			ArrayList<ArrayList<Square>> squaresList = board.get_squares_list();
 			for (int row = 0; row < size; row++) {
-				
+				Square xSquare = new Square(Status.x);
+				squaresList.get(row).add(0, xSquare);
 			}
+			assertEquals(0, board.CheckForWin());
 		}
 	}
 
