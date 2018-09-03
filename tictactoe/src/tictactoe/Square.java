@@ -2,15 +2,8 @@ package tictactoe;
 
 import javax.swing.JButton;
 
-enum Status {
-	x,
-	o,
-	q; // Question MArk or NONE
-}
-
-
 public class Square extends JButton {
-	
+
 	private Status status;
 	private boolean isBlocked = false;
 	
