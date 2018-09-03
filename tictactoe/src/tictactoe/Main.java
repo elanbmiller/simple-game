@@ -47,8 +47,6 @@ public class Main extends JFrame{
 
 		this.populate_init_frame(dimension, frame);
 
-		System.out.println(board.get_squares_list());
-
 		super.pack();
 		super.setVisible(true);
 
@@ -113,7 +111,6 @@ public class Main extends JFrame{
 			}
 			updated_squares_list.set(i, tmp);
 		}
-		System.out.println(updated_squares_list);
 		board.set_squares_list(updated_squares_list);
 	}
 
