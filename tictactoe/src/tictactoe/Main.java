@@ -12,11 +12,21 @@ import javax.swing.*;
 //Button listener from https://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
 //window closing execution from https://stackoverflow.com/questions/16372241/run-function-on-jframe-close
 
+/**
+ * Main class. Extends JFrame, and uses that to display the game board. Initializes board and displays it. Handles button click events.
+ * @author Ian Pearson, Elan Miller, Noah Saffer, Micah Wolfson
+ *
+ */
+
 public class Main extends JFrame{
 
 	Board board;
 	Status current_player = Status.x;
 
+
+	/**
+	 * Constructor for Main. Initializes as a JFrame, creates a game board, and displays the game elements.
+	 */
 	public Main() {
 		super("Main");
 		super.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -52,12 +62,28 @@ public class Main extends JFrame{
 
 	}
 	
+	/**
+	 * quitGame(): 
+	 * Called on quit (i.e. the user has closed the window); prompts the user to ask if they want to save, and calls the save method if so;
+	 * otherwise, disposes of the window and exits the program.
+	 */
 	private void quitGame() {
 		//TODO: prompt user to ask if they want to save, then save
 		
 		this.dispose();
 		System.exit(0);
 	}
+	
+	/**
+	 * populate_init_frame(int dimension, JFrame frame):
+	 * Initializes the board with Square buttons. Loads the Square objects up with the initial value of '?' to represent an empty square. 
+	 * Also sets up the event for the buttons, which changes their status (from ? to X or O), then asks the board to evaluate the current game state.
+	 * If a user has won, a dialog box will pop up declaring the winner; if it's a tie, it declares the tie. 
+	 * 
+	 * After initialization, the method sends the board the initialized squares list.
+	 * @param dimension: number of squares in each dimension of the board.
+	 * @param frame: the JFrame used to hold the buttons.
+	 */
 
 	public void populate_init_frame(int dimension, JFrame frame) {
 		ArrayList<ArrayList<Square>> updated_squares_list = board.get_squares_list();
@@ -113,7 +139,12 @@ public class Main extends JFrame{
 		}
 		board.set_squares_list(updated_squares_list);
 	}
-
+	
+	/**
+	 * get_dim():
+	 * Prompts the user for the board size that they want using a JOptionPane.
+	 * @return the dimensional value for the board
+	 */
 	public int get_dim() {
 		try {
 			int value = Integer.parseInt(JOptionPane.showInputDialog("You're about to play tic tac toe. Enter an integer size for the board."));
@@ -130,10 +161,17 @@ public class Main extends JFrame{
 		return -1;
 	}
 
+	/**
+	 * Gets the current player.
+	 * @return current player.
+	 */
 	public Status getPlayer() {
 		return current_player;
 	}
 
+	/**
+	 * Switch the current player to the next player.
+	 */
 	public void nextTurn() {
 		if(current_player == Status.x) {
 			current_player = Status.o;
@@ -142,6 +180,11 @@ public class Main extends JFrame{
 		}
 	}
 
+	/**
+	 * main():
+	 * creates a game object, which in turn runs the game.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Main game = new Main();
 
