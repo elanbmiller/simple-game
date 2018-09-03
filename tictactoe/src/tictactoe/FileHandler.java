@@ -1,8 +1,10 @@
 package tictactoe;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.Console;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -29,8 +31,8 @@ public class FileHandler {
 			String xScoreString, oScoreString, boardSizeString, currentMoveString;
 			xScoreString = in.readLine(); // First line is xScore
 			oScoreString = in.readLine();  // Second line is oScore
-			boardSizeString = in.readLine();
-			currentMoveString = in.readLine();
+			boardSizeString = in.readLine();  // Third line is score
+			currentMoveString = in.readLine();  // Fourth line is current move
 			xScore = Integer.parseInt(xScoreString);
 			oScore = Integer.parseInt(oScoreString);
 			boardSize = Integer.parseInt(boardSizeString);
@@ -88,7 +90,21 @@ public class FileHandler {
 
 
 	// For Saving
-	public void SaveCurrentGame(Main main) {
+	public void SaveCurrentGame(Board board, String fileName) {
+		
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+			writer.write();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
 
 	}
 

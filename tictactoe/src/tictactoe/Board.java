@@ -23,9 +23,52 @@ public class Board {
 	}
 
 	public Board(int _size, int _xScore, int _oScore, boolean _isXTurn, ArrayList<ArrayList<Status>> statusList) {
-
+		// TODO:
 		// Create a squareList and initiate it
 
+	}
+	
+	public String SerializeCurrentState() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(xScore);
+		sb.append('\n');
+		sb.append(oScore);
+		sb.append('\n');
+		sb.append(size);
+		sb.append('\n');
+		if (isXTurn) {
+			sb.append("x");
+		} else {
+			sb.append("o");
+		}
+		sb.append('\n');
+		
+		
+		
+		// Now do the board:
+		
+		for (int i = 0; i < squaresList.size(); i++) {
+			for (int j = 0; j < squaresList.get(i).size(); j++) {
+				
+				switch(squaresList.get(i).get(j).GetStatus()) {
+				case x:
+					sb.append("x");
+					break;
+				case o:
+					sb.append("o");
+					break;
+				case q:
+					sb.append("q");
+					break;
+				}
+				
+				sb.append(",");
+				
+			}
+			
+			sb.append('\n');
+		}		
+		return sb.toString();
 	}
 
 	public void set_squares_list(ArrayList<ArrayList<Square>> updated_squares_List) {
