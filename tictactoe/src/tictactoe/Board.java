@@ -81,7 +81,7 @@ public class Board {
 				sb.append(",");
 				
 			}
-			
+			sb.deleteCharAt(sb.lastIndexOf(",")); // Semi-Sloppy way to delete the last comma
 			sb.append('\n');
 		}		
 		return sb.toString();

@@ -5,3 +5,9 @@
 x,o,q
 o,x,x
 x,q,o
+
+
+
+Fuck, it's doing (1,1) x 3
+(2,2) x 3
+(3,3) x 3

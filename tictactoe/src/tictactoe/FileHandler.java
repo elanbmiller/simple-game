@@ -25,7 +25,7 @@ public class FileHandler {
 		int xScore, oScore, boardSize;
 		Boolean isXTurn;
 
-		try {
+		
 
 			BufferedReader in = new BufferedReader(new FileReader(fileName));
 			String xScoreString, oScoreString, boardSizeString, currentMoveString;
@@ -52,7 +52,7 @@ public class FileHandler {
 				statusList.add(new ArrayList<Status>() );
 
 				for (int j = 0; j < boardSize; j++) { // VALUES OF LINE TOOO
-					String currentVal = valuesOfLine[i];
+					String currentVal = valuesOfLine[j];
 
 					switch(currentVal) {
 					case "q":
@@ -70,14 +70,14 @@ public class FileHandler {
 				}
 
 			}
+			
+			System.out.println(statusList.toString());
 
 			Board returnBoard = new Board(xScore, oScore, boardSize, isXTurn, statusList);
 
 			return returnBoard;
 
-		} finally {
-			System.out.println("FUCK");
-		}
+		
 
 
 
