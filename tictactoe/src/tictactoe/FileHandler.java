@@ -20,20 +20,19 @@ public class FileHandler {
 
 	public Board GetBoardFromSavedGame(String fileName) throws IOException {
 
-		int xScore, yScore, boardSize;
+		int xScore, oScore, boardSize;
 		Boolean isXTurn;
 
-		// Read the first line:
 		try {
 
 			BufferedReader in = new BufferedReader(new FileReader(fileName));
-			String xScoreString, yScoreString, boardSizeString, currentMoveString;
-			xScoreString = in.readLine();
-			yScoreString = in.readLine();
+			String xScoreString, oScoreString, boardSizeString, currentMoveString;
+			xScoreString = in.readLine(); // First line is xScore
+			oScoreString = in.readLine();  // Second line is oScore
 			boardSizeString = in.readLine();
 			currentMoveString = in.readLine();
 			xScore = Integer.parseInt(xScoreString);
-			yScore = Integer.parseInt(yScoreString);
+			oScore = Integer.parseInt(oScoreString);
 			boardSize = Integer.parseInt(boardSizeString);
 
 			if (currentMoveString == "x") {
@@ -70,7 +69,7 @@ public class FileHandler {
 
 			}
 
-			Board returnBoard = new Board(xScore, yScore, boardSize, isXTurn, statusList);
+			Board returnBoard = new Board(xScore, oScore, boardSize, isXTurn, statusList);
 
 			return returnBoard;
 

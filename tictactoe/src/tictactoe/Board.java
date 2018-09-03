@@ -22,7 +22,7 @@ public class Board {
 		this.isXTurn = true;
 	}
 
-	public Board(int _size, int _xScore, int _yScore, boolean _isXTurn, ArrayList<ArrayList<Status>> statusList) {
+	public Board(int _size, int _xScore, int _oScore, boolean _isXTurn, ArrayList<ArrayList<Status>> statusList) {
 
 		// Create a squareList and initiate it
 
