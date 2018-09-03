@@ -25,7 +25,23 @@ public class Board {
 	public Board(int _size, int _xScore, int _oScore, boolean _isXTurn, ArrayList<ArrayList<Status>> statusList) {
 		// TODO:
 		// Create a squareList and initiate it
-
+		size = _size;
+		xScore = _xScore;
+		oScore = _oScore;
+		isXTurn = _isXTurn;
+		
+		ArrayList<ArrayList<Square>> tempSquaresList = new ArrayList<ArrayList<Square>>();
+		
+		int rowNum = 0;
+		for (ArrayList<Status> row: statusList) {
+			tempSquaresList.add(new ArrayList<Square>());
+			for (Status statusValue: row) {
+				tempSquaresList.get(rowNum).add(new Square(statusValue));
+			}
+			rowNum++;
+		}
+		
+		squaresList = tempSquaresList;
 	}
 	
 	public String SerializeCurrentState() {
