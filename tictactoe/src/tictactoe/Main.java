@@ -79,17 +79,13 @@ public class Main extends JFrame{
 					{
 						//if button has already been chosen
 						if (button.isBlocked()) {
-							JDialog d = new JDialog(frame, "Button is already set", true);
-							d.setLocationRelativeTo(frame);
-							d.setVisible(true);
+							JOptionPane.showMessageDialog(frame, "SOMEONE ALREADY CHOSE THAT SPOT", "NO NO NO!", JOptionPane.INFORMATION_MESSAGE);
 						}
 						else {
 							//change  status
 							button.ChangeStatus(getPlayer());
 							if(board.CheckForWin() != Status.q) {
-								JDialog d = new JDialog(frame, board.CheckForWin().toString() + " WON!!!!", true);
-								d.setLocationRelativeTo(frame);
-								d.setVisible(true);
+								JOptionPane.showMessageDialog(frame, board.CheckForWin().toString().toUpperCase() + " WON!!!!", "WINNER!", JOptionPane.INFORMATION_MESSAGE);
 								try {
 									Thread.sleep(100);
 								} catch (InterruptedException e1) {
@@ -99,9 +95,7 @@ public class Main extends JFrame{
 								System.exit(0);
 							}
 							else if (board.is_tie()) {
-								JDialog d = new JDialog(frame, "tie", true);
-								d.setLocationRelativeTo(frame);
-								d.setVisible(true);
+								JOptionPane.showMessageDialog(frame, "X AND O TIED!", "TIE GAME!", JOptionPane.INFORMATION_MESSAGE);
 								try {
 									Thread.sleep(100);
 								} catch (InterruptedException e1) {
