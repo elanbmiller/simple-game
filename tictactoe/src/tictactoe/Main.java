@@ -1,6 +1,7 @@
 package tictactoe;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -70,6 +71,8 @@ public class Main extends JFrame{
 			ArrayList tmp = new ArrayList<Square>();
 			for (int j = 0; j < dimension; j++) {
 				Square button = new Square(Status.q);
+				Font bSize12 = new Font("Arial", Font.PLAIN, 25);
+				button.setFont(bSize12);
 				button.addActionListener(new ActionListener()
 				{
 					public void actionPerformed(ActionEvent e)
@@ -124,7 +127,7 @@ public class Main extends JFrame{
 
 	public int get_dim() {
 		try {
-			int value = Integer.parseInt(JOptionPane.showInputDialog("Input Dimension"));
+			int value = Integer.parseInt(JOptionPane.showInputDialog("You're about to play tic tac toe. Enter a size for the board."));
 			if (value <= 0) {
 				JOptionPane.showMessageDialog(null, "Invalid", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
 				System.exit(1);
