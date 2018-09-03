@@ -39,7 +39,7 @@ public class Main extends JFrame{
 		//Current Player is automatically set to X
 		this.current_player = Status.x;
 
-		JFrame frame = new JFrame("Flow Layout");
+		JFrame frame = new JFrame("X's Turn");
 		frame.setLayout(new GridLayout(dimension,dimension));
 		frame.setSize(500,500);  
 		frame.setVisible(true);  
@@ -102,6 +102,7 @@ public class Main extends JFrame{
 								System.exit(0);
 							}
 							nextTurn();
+							frame.setTitle(getPlayer().toString().toUpperCase() + "'s Turn");
 						}
 
 
