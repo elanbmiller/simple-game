@@ -9,6 +9,8 @@ class TestFileWrite {
 	@Test
 	void test() {
 		
+		FileHandler fh = new FileHandler()
+		
 		
 		
 		

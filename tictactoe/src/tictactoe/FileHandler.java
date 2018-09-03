@@ -14,7 +14,7 @@ public class FileHandler {
 
 
 
-	public FileHandler (Main main) {
+	public FileHandler () {
 
 	}
 
@@ -97,7 +97,6 @@ public class FileHandler {
 			writer.write(board.SerializeCurrentState());
 			writer.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
