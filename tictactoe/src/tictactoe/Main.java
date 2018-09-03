@@ -1,6 +1,4 @@
 package tictactoe;
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -28,7 +26,6 @@ public class Main extends JFrame{
 				quitGame();
 			}
 		});
-		super.add(new JLabel("Tic Tac Toe"));
 
 
 		//TODO: Check if there's an unifinished game, if so, load it
@@ -121,7 +118,7 @@ public class Main extends JFrame{
 
 	public int get_dim() {
 		try {
-			int value = Integer.parseInt(JOptionPane.showInputDialog("You're about to play tic tac toe. Enter a size for the board."));
+			int value = Integer.parseInt(JOptionPane.showInputDialog("You're about to play tic tac toe. Enter an integer size for the board."));
 			if (value <= 0) {
 				JOptionPane.showMessageDialog(null, "Invalid", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
 				System.exit(1);
