@@ -94,8 +94,8 @@ public class FileHandler {
 		
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-			writer.write();
-			
+			writer.write(board.SerializeCurrentState());
+			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
