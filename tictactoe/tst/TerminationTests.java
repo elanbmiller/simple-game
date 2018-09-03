@@ -1,14 +1,10 @@
-package tictactoe;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import tictactoe.Board;
-import tictactoe.Square;
-
+import tictactoe.*;
 
 class TerminationTests {
 
