@@ -3,6 +3,11 @@ import java.util.ArrayList;
 //import java.awt;
 
 
+/**
+ * Encapsulates all the information regarding the tic tac toe game board.
+ * @author Elan, Micah, Noah, Ian
+ *
+ */
 public class Board {
 
 
@@ -11,8 +16,12 @@ public class Board {
 	int oScore = 0;
 	boolean isXTurn; //TODO:
 	int size;
-	
-	
+
+	/**
+	 * Called on creation of a new game after receiving the game board size from the user input.
+	 * Initializes the squaresList parameter with empty lists of squares and sets isXTurn to true. 
+	 * @param _size indicates the width and height of the board to be created
+	 */
 	public Board(int _size) {
 		size = _size;
 		// Create a squareList and initiate it
@@ -88,10 +97,18 @@ public class Board {
 		return sb.toString();
 	}
 
+	/**
+	 * This will be used to update the board after a player has made a move.
+	 * @param updated_squares_List indicates the new squaresList for this board
+	 */
 	public void set_squares_list(ArrayList<ArrayList<Square>> updated_squares_List) {
 		this.squaresList = updated_squares_List;
 	}
 
+	/**
+	 * Gets the current boards squaresList indicating where everything is
+	 * @return this.squaresList which contains the square info on the board
+	 */
 	public ArrayList<ArrayList<Square>> get_squares_list(){
 		return this.squaresList;
 	}
@@ -106,6 +123,9 @@ public class Board {
 		squaresList.get(x).get(y).ChangeStatus(newStatus);
 	}
 
+	/**
+	 * @return the status of the winner if there is a winner, otherwise it returns q indicating no one has won yet
+	 */
 	public Status CheckForWin(){
 		int size = squaresList.size();
 		//Check Columns
@@ -181,6 +201,10 @@ public class Board {
 		return Status.q;
 	}
 
+	/**
+	 * To be called if there is no winner yet. This will check if the board is full, which indicates that the game is a tie.
+	 * @return true indicating that the game is a tie or false otherwise
+	 */
 	public boolean is_tie(){
 		for(int i = 0; i < size; ++i){
 			for (int j = 0; j < size; j++) {
