@@ -65,7 +65,7 @@ public class FileHandler {
 						statusList.get(i).add(Status.x);
 						break;
 					default:
-						System.out.println("ERROR");
+						throw new FileReadError("Unrecognized character in readfile: " + currentVal);
 					}
 				}
 

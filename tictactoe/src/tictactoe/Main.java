@@ -11,7 +11,7 @@ import javax.swing.*;
 //Button listener from https://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
 
 public class Main extends JFrame{
-
+	
 	Board board;
 	Status current_player = Status.x;
 

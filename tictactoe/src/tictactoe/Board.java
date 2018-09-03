@@ -11,7 +11,8 @@ public class Board {
 	int oScore = 0;
 	boolean isXTurn; //TODO:
 	int size;
-
+	
+	
 	public Board(int _size) {
 		size = _size;
 		// Create a squareList and initiate it
