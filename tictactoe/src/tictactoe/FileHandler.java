@@ -37,7 +37,7 @@ public class FileHandler {
 			oScore = Integer.parseInt(oScoreString);
 			boardSize = Integer.parseInt(boardSizeString);
 
-			if (currentMoveString == "x") {
+			if (currentMoveString.equals("x")) {
 				isXTurn = true;
 			} else {
 				isXTurn = false;
@@ -70,8 +70,7 @@ public class FileHandler {
 				}
 
 			}
-			
-			System.out.println(statusList.toString());
+		
 
 			Board returnBoard = new Board(xScore, oScore, boardSize, isXTurn, statusList);
 
@@ -95,6 +94,7 @@ public class FileHandler {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 
 	}
 

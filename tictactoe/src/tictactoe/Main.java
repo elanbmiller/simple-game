@@ -80,7 +80,7 @@ public class Main extends JFrame {
 		super.setVisible(true);
 
 		fh = new FileHandler();
-
+		
 	}
 
 	/**
@@ -107,6 +107,12 @@ public class Main extends JFrame {
 
 		// If the user wants to save:
 		if (result == 1) {
+			//tell the board whose turn it is so it saves
+			if(current_player == Status.x) {
+				board.setIsXTurn(true);
+			} else {
+				board.setIsXTurn(false);
+			}
 			fh.SaveCurrentGame(board, fileName);
 		}
 
@@ -137,6 +143,17 @@ public class Main extends JFrame {
 			FileHandler fh = new FileHandler();
 			try {
 				board = fh.GetBoardFromSavedGame("bestGameOfAllTime.txt");
+				
+				//get current player's turn
+				System.out.println(board.getIsXTurn());
+				if(board.getIsXTurn()) {
+					current_player = Status.x;
+					frame.setTitle("X's Turn");
+				} else {
+					current_player = Status.o;
+					frame.setTitle("O's Turn");
+				}
+				
 				dimension = board.getSize();
 			} catch (IOException e) {
 				System.out.println("Error loading saved game");

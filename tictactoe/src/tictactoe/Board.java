@@ -114,12 +114,10 @@ public class Board {
 	}
 
 	public Status GetStatusAtLocation(int x, int y) {
-		// TODO: 
 		return squaresList.get(x).get(y).GetStatus();
 	}
 
 	public void ChangeStatusAtLocation(int x, int y, Status newStatus) {
-		// TODO:
 		squaresList.get(x).get(y).ChangeStatus(newStatus);
 	}
 
@@ -223,6 +221,13 @@ public class Board {
 		return size;
 	}
 
-
+	public boolean getIsXTurn() {
+		return isXTurn;
+	}
+	
+	public void setIsXTurn(boolean turn) {
+		isXTurn = turn;
+	}
+	
 
 }
