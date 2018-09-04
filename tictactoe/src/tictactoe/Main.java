@@ -31,7 +31,7 @@ public class Main extends JFrame{
 	 * Constructor for Main. Initializes as a JFrame, creates a game board, and displays the game elements.
 	 */
 	public Main() {
-		super("Main");
+		super("X's Turn");
 		super.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		super.addWindowListener(new WindowAdapter() {
 			@Override
@@ -51,13 +51,12 @@ public class Main extends JFrame{
 		//Current Player is automatically set to X
 		this.current_player = Status.x;
 
-		JFrame frame = this;
-		frame.setLayout(new GridLayout(dimension,dimension));
-		frame.setSize(500,500);  
-		frame.setVisible(true);  
+		this.setLayout(new GridLayout(dimension,dimension));
+		this.setSize(500,500);  
+		this.setVisible(true);  
 
 
-		this.populate_init_frame(dimension, frame);
+		this.populate_init_frame(dimension, this);
 
 		super.pack();
 		super.setVisible(true);
