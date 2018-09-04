@@ -22,6 +22,9 @@ public class Main extends JFrame{
 	
 	Board board;
 	Status current_player = Status.x;
+	FileHandler fh;
+	
+	static String fileName = "bestGameOfAllTime.txt";
 
 
 	/**
@@ -37,7 +40,6 @@ public class Main extends JFrame{
 			}
 		});
 
-
 		//TODO: Check if there's an unifinished game, if so, load it
 		//otherwise populate initial frame w/ question marks
 
@@ -49,7 +51,7 @@ public class Main extends JFrame{
 		//Current Player is automatically set to X
 		this.current_player = Status.x;
 
-		JFrame frame = new JFrame("X's Turn");
+		JFrame frame = this;
 		frame.setLayout(new GridLayout(dimension,dimension));
 		frame.setSize(500,500);  
 		frame.setVisible(true);  
@@ -59,6 +61,8 @@ public class Main extends JFrame{
 
 		super.pack();
 		super.setVisible(true);
+		
+		fh = new FileHandler();
 
 	}
 	
@@ -69,6 +73,30 @@ public class Main extends JFrame{
 	 */
 	private void quitGame() {
 		//TODO: prompt user to ask if they want to save, then save
+		
+		JOptionPane pane = new JOptionPane("Would you like to save your progress?");
+		Object[] options = new String[] { "Nah", "For sure" };
+		// Nah = 0; For sure = 1
+		pane.setOptions(options);
+		JDialog dialog = pane.createDialog(new JFrame(), "FileSystem");
+		dialog.setVisible(true);
+		Object obj = pane.getValue();
+		int result = -1;
+		for (int k = 0; k < options.length; k++) {
+			if (options[k].equals(obj)) {
+		        result = k;
+			}
+		}
+		System.out.println("User's choice: " + result);
+		
+		
+		
+		
+		// If the user wants to save:
+		if (result == 1) {
+			fh.SaveCurrentGame(board, fileName);
+		}
+		
 		
 		this.dispose();
 		System.exit(0);
