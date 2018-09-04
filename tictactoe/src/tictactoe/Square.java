@@ -1,5 +1,7 @@
 package tictactoe;
 
+import java.awt.Font;
+
 import javax.swing.JButton;
 
 
@@ -44,6 +46,8 @@ public class Square extends JButton {
 	public void ChangeStatus(Status newStatus) {
 		this.status = newStatus;
 		this.isBlocked = true;
+		Font bSize12 = new Font("Arial", Font.PLAIN, 25);
+		this.setFont(bSize12);
 		this.setText(newStatus.toString());
 	}
 	
