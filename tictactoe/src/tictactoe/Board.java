@@ -215,6 +215,13 @@ public class Board {
 		}
 		return true;
 	}
+	/**
+	 * Return the size of the board (i.e. its dimensions).
+	 * @return size
+	 */
+	public int getSize() {
+		return size;
+	}
 
 
 
