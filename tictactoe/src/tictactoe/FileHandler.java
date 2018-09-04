@@ -65,7 +65,7 @@ public class FileHandler {
 						statusList.get(i).add(Status.x);
 						break;
 					default:
-						throw new FileReadError("Unrecognized character in readfile: " + currentVal);
+						throw new IOException("Unrecognized character in readfile: " + currentVal);
 					}
 				}
 
@@ -76,10 +76,6 @@ public class FileHandler {
 			Board returnBoard = new Board(xScore, oScore, boardSize, isXTurn, statusList);
 
 			return returnBoard;
-
-		
-
-
 
 		//https://stackoverflow.com/questions/10960213/how-to-read-comma-separated-values-from-text-file-in-java
 
@@ -99,22 +95,8 @@ public class FileHandler {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		
 
 	}
-
-
-
-
-
-
-
-
-
 
 
 }
